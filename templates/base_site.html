@@ -1,0 +1,11 @@
+	{% extends "admin/base.html" %}
+			{% load i18n %}
+
+			{% block title %}{{ title }} | {% trans 'Saude 2024' %}{% endblock %}
+
+			{% block branding %}
+<!--			<h1 id="site-name" style="font-family: cursive;color:Shadow"><a href="{% url 'admin:index' %}">Controle 2023</a></h1>-->
+			<h1 id="site-name" style="font-family: Arial;color: red"><a href="{% url 'admin:index' %}">Saude Simples</a></h1>
+			{% endblock %}
+
+			{% block nav-global %}{% endblock %}

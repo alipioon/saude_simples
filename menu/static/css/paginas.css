@@ -1,0 +1,29 @@
+a:link , a:visited {
+    //color: Navy;
+    //color: SaddleBrown;
+    color: black;
+    //color: white;
+    text-decoration: none;
+    font-size:12px;
+    align: left;
+}
+
+h3{
+    font-size: 24px;
+   /* font-family: inherit;*/
+    font-weight: 500;
+    /*line-height: 1.1;*/
+    color: inherit;
+}
+
+.submit-row a.deletelink {
+    display: block;
+    background: #ba2121;
+    border-radius: 4px;
+    padding: 10px 15px;
+    line-height: 15px;
+    color: #f8f8f8;
+    height: 35px;
+    margin: 0 0 0 5px;
+}
+

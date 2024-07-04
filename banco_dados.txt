@@ -1,0 +1,81 @@
+-- DROP TABLE tabelas.menu;
+
+CREATE TABLE tabelas.menu (
+	id int4 NOT NULL,
+	nome varchar(30) NULL,
+	descricao varchar(30) NULL,
+	tipo int4 NULL,
+	ordem int4 NULL,
+	CONSTRAINT menu_pkey PRIMARY KEY (id)
+);
+
+-- Permissions
+
+ALTER TABLE tabelas.menu OWNER TO postgres;
+GRANT ALL ON TABLE tabelas.menu TO postgres;
+
+INSERT INTO tabelas.menu(id, nome, descricao, tipo, ordem)VALUES
+(1, 'Cadastros', 'cadastros', 1, 1),
+(4, 'Categorias', 'categorias', 3, 2),
+(5, 'Tabelas Dominio', 'tab_dominio', 3, 6),
+(2, 'Lançamentos', 'Lançamentos', 2, 4),
+(3, 'Relatorios', 'relatorios', 3, 5);
+
+
+
+-- DROP TABLE tabelas.submenu;
+
+CREATE TABLE tabelas.submenu (
+	id int4 NOT NULL,
+	classe varchar(30) NULL,
+	"method" varchar(50) NULL,
+	link varchar(50) NULL,
+	menu_id int4 NULL,
+	ordem int4 NULL,
+	CONSTRAINT submenu_pkey PRIMARY KEY (id)
+);
+
+-- Permissions
+
+ALTER TABLE tabelas.submenu OWNER TO postgres;
+GRANT ALL ON TABLE tabelas.submenu TO postgres;
+
+
+-- tabelas.submenu foreign keys
+
+ALTER TABLE tabelas.submenu ADD CONSTRAINT submenu_menu_id_fkey FOREIGN KEY (menu_id) REFERENCES tabelas.menu(id);
+
+INSERT INTO tabelas.submenu(id, classe, "method", link, menu_id, ordem)VALUES
+(30, 'Usuarios', 'usuario', 'admin/usuario/usuario', 1, 1),
+(32, 'Municipes', 'municipe', 'admin/municipe/municipe/', 1, 3);
+(34, 'Fornecedores', 'fornecedor', 'Fornecedores/fornecedor/listar', 1, 5),
+(36, 'Menus', 'menus', 'Menus/menu/listar', 1, 7),
+(15, 'Sesuite', 'sesuite', 'sesuite/listar', 4, 55),
+(16, 'Prodimage', 'prodimage', 'prodimage/listar', 4, 57),
+(12, 'Projetos', 'projetos', 'projetos/listar', 2, 20),
+(10, 'Folgas', 'folgas', 'folgas/listar', 2, 24),
+(11, 'Horas', 'horas', 'horas/listar', 2, 21),
+(43, 'Horas', 'horas', 'horas/listar', 3, 43),
+(40, 'Projetos', 'projetos', 'projetos/listar', 3, 40);
+
+
+
+-- DROP TABLE public.usuarios;
+
+CREATE TABLE public.usuarios (
+	id int4 NOT NULL,
+	nome varchar(50) NULL,
+	email varchar(50) NULL,
+	funcao varchar(30) NULL,
+	ordem int4 NULL,
+	CONSTRAINT usuarios_pkey PRIMARY KEY (id)
+);
+
+-- Permissions
+
+ALTER TABLE public.usuarios OWNER TO postgres;
+GRANT ALL ON TABLE public.usuarios TO postgres;
+
+INSERT INTO public.usuarios(id, nome, email, funcao, ordem)VALUES
+(1, 'alipio', 'alipio@gmail.com', 'dba', 1),
+(2, 'adriano', 'adriano@hotmail.com', 'infra', 2);
